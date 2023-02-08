@@ -114,9 +114,9 @@
                 <i class="me-2 icon-md" data-feather="log-out"></i>
                 <span>Log Out</span>
               </a> --}}
-                <form action="/logout" method="post">
+                <form action="/logout" method="post" id="logout">
                     @csrf
-                    <button type="submit" class="text-body ms-0"><i class="me-2 icon-md" data-feather="log-out"></i><span>Logout</span></button>
+                    <a href="javascript:logout();" class="text-body ms-0"><i class="me-2 icon-md" data-feather="log-out"></i><span>Logout</span></a>
                 </form>
             </li>
           </ul>
@@ -125,3 +125,9 @@
     </ul>
   </div>
 </nav>
+
+<script>
+    function logout() {
+        document.getElementById("logout").submit();
+    }
+</script>
