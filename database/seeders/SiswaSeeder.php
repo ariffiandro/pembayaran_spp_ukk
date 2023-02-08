@@ -23,6 +23,7 @@ class SiswaSeeder extends Seeder
                 'id_kelas' => 1,
                 'alamat' => 'Jl. Kamboja',
                 'no_telp' => '081252127451',
+                'id_spp' => 1,
                 'password' => bcrypt('123456')
             ],
             [
@@ -32,6 +33,7 @@ class SiswaSeeder extends Seeder
                 'id_kelas' => 1,
                 'alamat' => 'Jl. Cempaka',
                 'no_telp' => '081252127444',
+                'id_spp' => 1,
                 'password' => bcrypt('123456')
             ]
         ];
