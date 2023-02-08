@@ -23,9 +23,8 @@ class LevelPetugas
         if ($user) {
             if ($paths[0] == $user->level) {
                 return $next($request);
-            } else {
-                return redirect("$user->level");
             }
+            return redirect("$user->level");
         }
 
         return redirect()->route('login');
