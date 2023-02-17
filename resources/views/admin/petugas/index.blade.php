@@ -46,7 +46,8 @@
                                         <td>{{$item->nama_petugas}}</td>
                                         <td>{{$item->level}}</td>
                                         <td>
-                                            <form action="{{ route('petugas.destroy', $item->id_petugas) }}" method="POST" id="delete{{$item->id_petugas}}">
+                                            <form action="{{ route('petugas.destroy', $item->id_petugas) }}"
+                                                  method="POST" id="delete{{$item->id_petugas}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -115,7 +116,7 @@
 
 <script>
     function delConf(id) {
-        const form = document.getElementById('delete'+id)
+        const form = document.getElementById('delete' + id)
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',

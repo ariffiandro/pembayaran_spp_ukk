@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @push('plugin-styles')
-    <link href="{{ asset('assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet"/>
 @endpush
 
 @section('content')
@@ -24,7 +24,9 @@
                         @csrf
                         <div class="mb-3">
                             <label for="nama_kelas" class="form-label">Nama Kelas</label>
-                            <input type="text" class="form-control @error('nama_kelas') is-invalid @enderror" name="nama_kelas" placeholder="Nama kelas ..." value="{{(old('nama_kelas')) ? old('nama_kelas') : $data->nama_kelas}}">
+                            <input type="text" class="form-control @error('nama_kelas') is-invalid @enderror"
+                                   name="nama_kelas" placeholder="Nama kelas ..."
+                                   value="{{(old('nama_kelas')) ? old('nama_kelas') : $data->nama_kelas}}">
                             @error('nama_kelas')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -33,7 +35,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="kompetensi_keahlian" class="form-label">Kompetensi Keahlian</label>
-                            <input type="text" class="form-control @error('kompetensi_keahlian') is-invalid @enderror" name="kompetensi_keahlian" placeholder="Kompetensi keahlian ..." value="{{(old('kompetensi_keahlian')) ? old('kompetensi_keahlian') : $data->kompetensi_keahlian}}">
+                            <input type="text" class="form-control @error('kompetensi_keahlian') is-invalid @enderror"
+                                   name="kompetensi_keahlian" placeholder="Kompetensi keahlian ..."
+                                   value="{{(old('kompetensi_keahlian')) ? old('kompetensi_keahlian') : $data->kompetensi_keahlian}}">
                             @error('kompetensi_keahlian')
                             <div class="invalid-feedback">
                                 {{$message}}

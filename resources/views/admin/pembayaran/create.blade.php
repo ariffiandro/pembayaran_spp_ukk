@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @push('plugin-styles')
-    <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet"/>
     {{-- <link href="{{ asset('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" /> --}}
 @endpush
 
@@ -25,10 +25,12 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="nisn" class="form-label">Nama Siswa</label>
-                                <select class="js-example-basic-single form-select" data-placeholder="Pilih siswa" data-width="100%" name="nisn">
+                                <select class="js-example-basic-single form-select" data-placeholder="Pilih siswa"
+                                        data-width="100%" name="nisn">
                                     <option value=""></option>
                                     @foreach ($siswa as $sw)
-                                        <option value="{{ $sw->nisn }}">{{ $sw->nama }} - {{ $sw->spp->nominal }}</option>
+                                        <option value="{{ $sw->nisn }}">{{ $sw->nama }}
+                                            - {{ $sw->spp->nominal }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -49,7 +51,8 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="bulan_dibayar" class="form-label">Bulan Dibayar</label>
-                                    <select class="js-example-basic-single form-select" data-placeholder="Pilih bulan" data-width="100%" name="bulan_dibayar">
+                                    <select class="js-example-basic-single form-select" data-placeholder="Pilih bulan"
+                                            data-width="100%" name="bulan_dibayar">
                                         <option value=""></option>
                                         @foreach ($bulan as $bl)
                                             <option value="{{ $bl }}">{{ $bl }}</option>
@@ -67,7 +70,10 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="tahun_dibayar" class="form-label">Tahun Dibayar</label>
-                                    <input type="number" class="form-control @error('tahun_dibayar') is-invalid @enderror" name="tahun_dibayar" placeholder="Tahun dibayar ..." value="{{old('tahun_dibayar')}}">
+                                    <input type="number"
+                                           class="form-control @error('tahun_dibayar') is-invalid @enderror"
+                                           name="tahun_dibayar" placeholder="Tahun dibayar ..."
+                                           value="{{old('tahun_dibayar')}}">
                                     @error('tahun_dibayar')
                                     <div class="invalid-feedback">
                                         {{$message}}
@@ -78,7 +84,10 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="jumlah_bayar" class="form-label">Jumalh Dibayar</label>
-                                    <input type="number" class="form-control @error('jumlah_bayar') is-invalid @enderror" name="jumlah_bayar" placeholder="Jumlah dibayar ..." value="{{old('jumlah_bayar')}}">
+                                    <input type="number"
+                                           class="form-control @error('jumlah_bayar') is-invalid @enderror"
+                                           name="jumlah_bayar" placeholder="Jumlah dibayar ..."
+                                           value="{{old('jumlah_bayar')}}">
                                     @error('jumlah_bayar')
                                     <div class="invalid-feedback">
                                         {{$message}}

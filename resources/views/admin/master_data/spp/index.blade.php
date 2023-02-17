@@ -44,7 +44,8 @@
                                         <td>{{$item->tahun}}</td>
                                         <td>{{$item->nominal}}</td>
                                         <td>
-                                            <form action="{{ route('spp.destroy', $item->id_spp) }}" method="POST" id="delete{{$item->id_spp}}">
+                                            <form action="{{ route('spp.destroy', $item->id_spp) }}" method="POST"
+                                                  id="delete{{$item->id_spp}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -113,7 +114,7 @@
 
 <script>
     function delConf(id) {
-        const form = document.getElementById('delete'+id)
+        const form = document.getElementById('delete' + id)
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
                 confirmButton: 'btn btn-success',

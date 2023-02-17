@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @push('plugin-styles')
-    <link href="{{ asset('assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/dropify/css/dropify.min.css') }}" rel="stylesheet"/>
 @endpush
 
 @section('content')
@@ -19,12 +19,14 @@
                     <h6 class="card-title d-inline">{{$title}}</h6>
                 </div>
                 <div class="card-body">
-                    <form class="forms-sample" method="post" enctype="multipart/form-data" action="/admin/master-data/spp/{{$data->id_spp}}">
+                    <form class="forms-sample" method="post" enctype="multipart/form-data"
+                          action="/admin/master-data/spp/{{$data->id_spp}}">
                         @method('PUT')
                         @csrf
                         <div class="mb-3">
                             <label for="tahun" class="form-label">Nama</label>
-                            <input type="number" class="form-control @error('tahun') is-invalid @enderror" name="tahun" placeholder="Nama Guru ..." value="{{(old('tahun')) ? old('tahun') : $data->tahun}}">
+                            <input type="number" class="form-control @error('tahun') is-invalid @enderror" name="tahun"
+                                   placeholder="Nama Guru ..." value="{{(old('tahun')) ? old('tahun') : $data->tahun}}">
                             @error('tahun')
                             <div class="invalid-feedback">
                                 {{$message}}
@@ -33,7 +35,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="nominal" class="form-label">Email</label>
-                            <input type="number" class="form-control @error('nominal') is-invalid @enderror" name="nominal" placeholder="Email ..." value="{{(old('nominal')) ? old('nominal') : $data->nominal}}">
+                            <input type="number" class="form-control @error('nominal') is-invalid @enderror"
+                                   name="nominal" placeholder="Email ..."
+                                   value="{{(old('nominal')) ? old('nominal') : $data->nominal}}">
                             @error('nominal')
                             <div class="invalid-feedback">
                                 {{$message}}
