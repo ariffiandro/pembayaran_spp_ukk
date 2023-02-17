@@ -56,7 +56,7 @@ class PembayaranController extends Controller
 
         Pembayaran::create($postData);
 
-        redirect("$level/pembayaran")->with('success', 'Berhasil melakukan pembayaran');
+        return redirect("$level/pembayaran")->with('success', 'Berhasil melakukan pembayaran');
     }
 
     /**
@@ -96,7 +96,16 @@ class PembayaranController extends Controller
      */
     public function update(PembayaranUpdateRequest $request, Pembayaran $pembayaran)
     {
-        //
+        $level = $this->user()->level;
+        date_default_timezone_set('Asia/Jakarta');
+
+        $postData = $request->validated();
+        $postData['id_petugas'] = $this->user()->id_petugas;
+//        $postData['tgl_bayar'] = date('Y-m-d');
+
+        $pembayaran->where('id_pembayaran',$pembayaran->id_pembayaran)->update($postData);
+
+        return redirect("$level/pembayaran")->with('success', 'Berhasil melakukan pembayaran');
     }
 
     /**
@@ -107,7 +116,11 @@ class PembayaranController extends Controller
      */
     public function destroy(Pembayaran $pembayaran)
     {
-        //
+        $level = $this->user()->level;
+
+        $pembayaran->destroy($pembayaran->id_pembayaran);
+
+        return redirect("$level/pembayaran")->with('success', 'Berhasil menghapus pembayaran');
     }
 
     public function user()

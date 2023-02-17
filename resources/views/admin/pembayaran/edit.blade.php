@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @push('plugin-styles')
-    <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet"/>
 @endpush
 
 @section('content')
@@ -19,38 +19,34 @@
                     <h6 class="card-title d-inline">{{$title}}</h6>
                 </div>
                 <div class="card-body">
-                    <form class="forms-sample" method="post" action="/admin/master-data/siswa/{{ $data->nisn }}">
+                    <form class="forms-sample" method="post" action="/{{$level}}/pembayaran/{{ $data->id_pembayaran }}">
                         @method('PUT')
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="nisn" class="form-label">NISN</label>
-                                    <input type="text" class="form-control @error('nisn') is-invalid @enderror" name="nisn" placeholder="NISN ..." value="{{$data->nisn}}" readonly>
-                                    @error('nisn')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
+                                <label for="nisn" class="form-label">Nama Siswa</label>
+                                <select class="js-example-basic-single form-select" data-placeholder="Pilih siswa"
+                                        data-width="100%" name="nisn">
+                                    <option value=""></option>
+                                    @foreach ($siswa as $sw)
+                                        <option value="{{ $sw->nisn }}"
+                                                @if ($data->nisn == $sw->nisn) selected @endif>{{ $sw->nama }}
+                                            - {{ $sw->spp->nominal }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="nis" class="form-label">NIS</label>
-                                    <input type="text" class="form-control @error('nis') is-invalid @enderror" name="nis" placeholder="NIS ..." value="{{(old('nis')) ? old('nis') : $data->nis}}">
-                                    @error('nis')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" placeholder="Nama siswa ..." value="{{(old('nama')) ? old('nama') : $data->nama}}">
+                                    <label for="bulan_dibayar" class="form-label">Bulan Dibayar</label>
+                                    <select class="js-example-basic-single form-select"
+                                            data-placeholder="Pilih bulan"
+                                            data-width="100%" name="bulan_dibayar">
+                                        <option value=""></option>
+                                        @foreach ($bulan as $bl)
+                                            <option value="{{ $bl }}"
+                                                    @if ($data->bulan_dibayar == $bl) selected @endif>{{ $bl }}</option>
+                                        @endforeach
+                                    </select>
                                     @error('nama')
                                     <div class="invalid-feedback">
                                         {{$message}}
@@ -58,45 +54,30 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="id_kelas" class="form-label">Kelas</label>
-                                <select class="js-example-basic-single form-select" data-placeholder="Pilih kelas" data-width="100%" name="id_kelas">
-                                    <option value=""></option>
-                                    @foreach ($kelas as $kl)
-                                        <option value="{{ $kl->id_kelas }}" @if ($data->id_kelas == $kl->id_kelas) selected @endif>{{ $kl->nama_kelas }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="no_telp" class="form-label">No. Telepon</label>
-                                    <input type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" placeholder="No. telepon ..." value="{{(old('no_telp')) ? old('no_telp') : $data->no_telp}}">
-                                    @error('no_telp')
+                                    <label for="tahun_dibayar" class="form-label">Tahun Dibayar</label>
+                                    <input type="number"
+                                           class="form-control @error('tahun_dibayar') is-invalid @enderror"
+                                           name="tahun_dibayar" placeholder="Tahun dibayar ..."
+                                           value="{{(old('tahun_dibayar')) ? old('tahun_dibayar') : $data->tahun_dibayar}}">
+                                    @error('tahun_dibayar')
                                     <div class="invalid-feedback">
                                         {{$message}}
                                     </div>
                                     @enderror
                                 </div>
-                                <label for="id_spp" class="form-label">SPP</label>
-                                <select class="js-example-basic-single form-select @error('spp') is-invalid @enderror" data-placeholder="Pilih SPP" data-width="100%" name="id_spp">
-                                    <option value=""></option>
-                                    @foreach ($spp as $sp)
-                                        <option value="{{ $sp->id_spp }}" @if ($data->id_spp == $sp->id_spp) selected @endif>{{ $sp->nominal }}</option>
-                                    @endforeach
-                                </select>
-                                @error('spp')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                @enderror
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="alamat" class="form-label">Alamat</label>
-                                    <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="4" placeholder="Alamat ...">{{(old('alamat')) ? old('alamat') : $data->alamat}}</textarea>
-                                    @error('alamat')
+                                    <label for="jumlah_bayar" class="form-label">Jumalh Dibayar</label>
+                                    <input type="number"
+                                           class="form-control @error('jumlah_bayar') is-invalid @enderror"
+                                           name="jumlah_bayar" placeholder="Jumlah dibayar ..."
+                                           value="{{(old('jumlah_bayar')) ? old('jumlah_bayar') : $data->jumlah_bayar}}">
+                                    @error('jumlah_bayar')
                                     <div class="invalid-feedback">
                                         {{$message}}
                                     </div>

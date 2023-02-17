@@ -56,7 +56,7 @@
                                         <td>{{$item->siswa->spp->nominal}}</td>
                                         <td>{{$item->jumlah_bayar}}</td>
                                         <td>
-                                            <form action="{{ route('pembayaran.destroy', $item->id_pembayaran) }}"
+                                            <form action="pembayaran/{{$item->id_pembayaran}}"
                                                   method="POST" id="delete{{$item->id_pembayaran}}">
                                                 @csrf
                                                 @method('DELETE')
