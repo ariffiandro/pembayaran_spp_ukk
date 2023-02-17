@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\MAsterData\Spp;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin\MasterData\Spp;
 use Illuminate\Database\Seeder;
 
 class SppSedeer extends Seeder
