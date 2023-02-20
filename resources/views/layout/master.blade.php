@@ -9,6 +9,7 @@ Purchase: https://1.envato.market/nobleui_laravel
 License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
 -->
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +17,9 @@ License: For each use you must have a valid license purchased only from above li
     <meta name="description" content="Responsive Laravel Admin Dashboard Template based on Bootstrap 5">
     <meta name="author" content="NobleUI">
     <meta name="keywords"
-          content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
+        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, laravel, theme, front-end, ui kit, web">
 
-    <title>SMK PGRI - Presensi Guru</title>
+    <title>SMK PGRI - Pembayaran SPP</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,48 +33,50 @@ License: For each use you must have a valid license purchased only from above li
     <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
 
     <!-- plugin css -->
-    <link href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet"/>
-    <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/fonts/feather-font/css/iconfont.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/flag-icon-css/css/flag-icon.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
     <!-- end plugin css -->
 
     @stack('plugin-styles')
 
     <!-- common css -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- end common css -->
 
     @stack('style')
 </head>
-<body data-base-url="{{url('/')}}">
 
-<script src="{{ asset('assets/js/spinner.js') }}"></script>
+<body data-base-url="{{ url('/') }}">
 
-<div class="main-wrapper" id="app">
-    @include('layout.sidebar')
-    <div class="page-wrapper">
-        @include('layout.header')
-        <div class="page-content">
-            @yield('content')
+    <script src="{{ asset('assets/js/spinner.js') }}"></script>
+
+    <div class="main-wrapper" id="app">
+        @include('layout.sidebar')
+        <div class="page-wrapper">
+            @include('layout.header')
+            <div class="page-content">
+                @yield('content')
+            </div>
+            @include('layout.footer')
         </div>
-        @include('layout.footer')
     </div>
-</div>
 
-<!-- base js -->
-<script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-<!-- end base js -->
+    <!-- base js -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('assets/plugins/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
+    <!-- end base js -->
 
-<!-- plugin js -->
-@stack('plugin-scripts')
-<!-- end plugin js -->
+    <!-- plugin js -->
+    @stack('plugin-scripts')
+    <!-- end plugin js -->
 
-<!-- common js -->
-<script src="{{ asset('assets/js/template.js') }}"></script>
-<!-- end common js -->
+    <!-- common js -->
+    <script src="{{ asset('assets/js/template.js') }}"></script>
+    <!-- end common js -->
 
-@stack('custom-scripts')
+    @stack('custom-scripts')
 </body>
+
 </html>
