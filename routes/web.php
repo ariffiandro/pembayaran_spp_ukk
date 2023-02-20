@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PetugasController;
 use App\Http\Controllers\Admin\MasterData\KelasController;
 use App\Http\Controllers\Admin\MasterData\SiswaController;
@@ -45,10 +46,14 @@ Route::group(['middleware' => 'level'], function () {
         });
         Route::resource('petugas', PetugasController::class)->parameters(['petugas' => 'petugas']);
         Route::resource('pembayaran', PembayaranController::class);
+        Route::get('laporan', [LaporanController::class, 'index']);
+        Route::post('laporan', [LaporanController::class, 'generatePDF']);
     });
 
     Route::group(['prefix' => 'petugas'], function () {
         Route::resource('pembayaran', PembayaranController::class);
+        Route::get('laporan', [LaporanController::class, 'index']);
+        Route::post('laporan', [LaporanController::class, 'generatePDF']);
     });
 });
 

@@ -19,28 +19,28 @@
                 </a>
             </li>
             <li class="nav-item nav-category">Master Data</li>
-            {{--      <li class="nav-item {{ active_class(['email/*']) }}">--}}
-            {{--        <a class="nav-link" data-bs-toggle="collapse" href="#email" role="button" aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email">--}}
-            {{--          <i class="link-icon" data-feather="mail"></i>--}}
-            {{--          <span class="link-title">Email</span>--}}
-            {{--          <i class="link-arrow" data-feather="chevron-down"></i>--}}
-            {{--        </a>--}}
-            {{--        <div class="collapse {{ show_class(['email/*']) }}" id="email">--}}
-            {{--          <ul class="nav sub-menu">--}}
-            {{--            <li class="nav-item">--}}
-            {{--              <a href="{{ url('/email/inbox') }}" class="nav-link {{ active_class(['email/inbox']) }}">Inbox</a>--}}
-            {{--            </li>--}}
-            {{--            <li class="nav-item">--}}
-            {{--              <a href="{{ url('/email/read') }}" class="nav-link {{ active_class(['email/read']) }}">Read</a>--}}
-            {{--            </li>--}}
-            {{--            <li class="nav-item">--}}
-            {{--              <a href="{{ url('/email/compose') }}" class="nav-link {{ active_class(['email/compose']) }}">Compose</a>--}}
-            {{--            </li>--}}
-            {{--          </ul>--}}
-            {{--        </div>--}}
-            {{--      </li>--}}
+            {{--      <li class="nav-item {{ active_class(['email/*']) }}"> --}}
+            {{--        <a class="nav-link" data-bs-toggle="collapse" href="#email" role="button" aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email"> --}}
+            {{--          <i class="link-icon" data-feather="mail"></i> --}}
+            {{--          <span class="link-title">Email</span> --}}
+            {{--          <i class="link-arrow" data-feather="chevron-down"></i> --}}
+            {{--        </a> --}}
+            {{--        <div class="collapse {{ show_class(['email/*']) }}" id="email"> --}}
+            {{--          <ul class="nav sub-menu"> --}}
+            {{--            <li class="nav-item"> --}}
+            {{--              <a href="{{ url('/email/inbox') }}" class="nav-link {{ active_class(['email/inbox']) }}">Inbox</a> --}}
+            {{--            </li> --}}
+            {{--            <li class="nav-item"> --}}
+            {{--              <a href="{{ url('/email/read') }}" class="nav-link {{ active_class(['email/read']) }}">Read</a> --}}
+            {{--            </li> --}}
+            {{--            <li class="nav-item"> --}}
+            {{--              <a href="{{ url('/email/compose') }}" class="nav-link {{ active_class(['email/compose']) }}">Compose</a> --}}
+            {{--            </li> --}}
+            {{--          </ul> --}}
+            {{--        </div> --}}
+            {{--      </li> --}}
             @php
-                $petugas = Auth::guard('petugas')->user()->level
+                $petugas = Auth::guard('petugas')->user()->level;
             @endphp
             @if ($petugas == 'admin')
                 <li class="nav-item {{ active_class(['admin/master-data/spp']) }}">
@@ -75,6 +75,12 @@
                         <span class="link-title">Pembayaran</span>
                     </a>
                 </li>
+                <li class="nav-item {{ active_class(['admin/laporan']) }}">
+                    <a href="{{ url("/$petugas/laporan") }}" class="nav-link">
+                        <i class="link-icon" data-feather="list"></i>
+                        <span class="link-title">Laporan</span>
+                    </a>
+                </li>
             @endauth
         </ul>
     </div>
@@ -89,14 +95,14 @@
             <div class="form-check form-check-inline">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight"
-                           value="sidebar-light" checked>
+                        value="sidebar-light" checked>
                     Light
                 </label>
             </div>
             <div class="form-check form-check-inline">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark"
-                           value="sidebar-dark">
+                        value="sidebar-dark">
                     Dark
                 </label>
             </div>
