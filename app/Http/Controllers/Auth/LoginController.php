@@ -21,15 +21,22 @@ class LoginController extends Controller
             $remember = true;
         }
 
+        $login = $request->validated();
+
         Auth::setDefaultDriver('petugas');
 
-        if (Auth::attempt($request->validated())) {
+        if (Auth::attempt($login)) {
             $request->session()->regenerate();
             // dd(Auth::user());
             return redirect()->intended('/admin');
-        } else if (Auth::guard('siswa')->attempt($request->validated())) {
-            $request->session()->regenerate();
-            return redirect()->intended('/siswa');
+        } else {
+            $login['nisn'] = $login['username'];
+            unset($login['username']);
+            Auth::setDefaultDriver('siswa');
+            if (Auth::attempt($login)) {
+                $request->session()->regenerate();
+                return redirect()->intended('/siswa');
+            }
         }
 
         return back()->with('loginError', 'Login Gagal, email atau password tidak diketahui!');

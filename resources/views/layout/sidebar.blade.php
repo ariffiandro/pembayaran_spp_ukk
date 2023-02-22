@@ -12,13 +12,15 @@
     <div class="sidebar-body">
         <ul class="nav">
             <li class="nav-item nav-category">Main</li>
-            <li class="nav-item {{ active_class(['/']) }}">
-                <a href="{{ url('/') }}" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item nav-category">Master Data</li>
+            @auth('petugas')
+                <li class="nav-item {{ active_class(['/']) }}">
+                    <a href="{{ url('/') }}" class="nav-link">
+                        <i class="link-icon" data-feather="box"></i>
+                        <span class="link-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-category">Master Data</li>
+            @endauth
             {{--      <li class="nav-item {{ active_class(['email/*']) }}"> --}}
             {{--        <a class="nav-link" data-bs-toggle="collapse" href="#email" role="button" aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email"> --}}
             {{--          <i class="link-icon" data-feather="mail"></i> --}}
@@ -39,34 +41,34 @@
             {{--          </ul> --}}
             {{--        </div> --}}
             {{--      </li> --}}
-            @php
-                $petugas = Auth::guard('petugas')->user()->level;
-            @endphp
-            @if ($petugas == 'admin')
-                <li class="nav-item {{ active_class(['admin/master-data/spp']) }}">
-                    <a href="{{ url('/admin/master-data/spp') }}" class="nav-link">
-                        <i class="link-icon" data-feather="dollar-sign"></i>
-                        <span class="link-title">SPP</span>
-                    </a>
-                </li>
-                <li class="nav-item {{ active_class(['admin/master-data/kelas']) }}">
-                    <a href="{{ url('/admin/master-data/kelas') }}" class="nav-link">
-                        <i class="link-icon" data-feather="list"></i>
-                        <span class="link-title">Kelas</span>
-                    </a>
-                </li>
-                <li class="nav-item {{ active_class(['admin/master-data/siswa']) }}">
-                    <a href="{{ url('/admin/master-data/siswa') }}" class="nav-link">
-                        <i class="link-icon" data-feather="users"></i>
-                        <span class="link-title">Siswa</span>
-                    </a>
-                </li>
-                <li class="nav-item {{ active_class(['admin/petugas']) }}">
-                    <a href="{{ url('/admin/petugas') }}" class="nav-link">
-                        <i class="link-icon" data-feather="users"></i>
-                        <span class="link-title">Petugas</span>
-                    </a>
-                </li>
+            @if (Auth::guard('petugas')->check())
+                $petugas = Auth::guard('petugas')->user()->level
+                @if ($petugas == 'admin')
+                    <li class="nav-item {{ active_class(['admin/master-data/spp']) }}">
+                        <a href="{{ url('/admin/master-data/spp') }}" class="nav-link">
+                            <i class="link-icon" data-feather="dollar-sign"></i>
+                            <span class="link-title">SPP</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ active_class(['admin/master-data/kelas']) }}">
+                        <a href="{{ url('/admin/master-data/kelas') }}" class="nav-link">
+                            <i class="link-icon" data-feather="list"></i>
+                            <span class="link-title">Kelas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ active_class(['admin/master-data/siswa']) }}">
+                        <a href="{{ url('/admin/master-data/siswa') }}" class="nav-link">
+                            <i class="link-icon" data-feather="users"></i>
+                            <span class="link-title">Siswa</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ active_class(['admin/petugas']) }}">
+                        <a href="{{ url('/admin/petugas') }}" class="nav-link">
+                            <i class="link-icon" data-feather="users"></i>
+                            <span class="link-title">Petugas</span>
+                        </a>
+                    </li>
+                @endif
             @endif
             @auth('petugas')
                 <li class="nav-item {{ active_class(['admin/pembayaran']) }}">

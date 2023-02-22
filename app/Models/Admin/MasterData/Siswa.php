@@ -2,11 +2,13 @@
 
 namespace App\Models\Admin\MasterData;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Siswa extends Model
+class Siswa extends Model implements Authenticatable
 {
+    use \Illuminate\Auth\Authenticatable;
     use HasFactory;
 
     protected $table = 'siswa';

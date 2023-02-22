@@ -57,6 +57,10 @@ Route::group(['middleware' => 'level'], function () {
     });
 });
 
+Route::get('/siswa', function () {
+    return view('siswa');
+})->middleware('siswa');
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout']);
