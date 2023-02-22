@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\MasterData\KelasController;
 use App\Http\Controllers\Admin\MasterData\SiswaController;
 use App\Http\Controllers\Admin\MasterData\SppController;
 use App\Http\Controllers\Admin\PembayaranController;
+use App\Models\Admin\Pembayaran;
 
 // Route::get('/', function () {
 //     return redirect('/admin');
@@ -58,7 +59,12 @@ Route::group(['middleware' => 'level'], function () {
 });
 
 Route::get('/siswa', function () {
-    return view('siswa');
+    $nisn = Auth::guard('siswa')->user()->nisn;
+    $data = [
+        'title' => 'Riwayat Pembayaran',
+        'data' => Pembayaran::where('nisn', $nisn)->get()
+    ];
+    return view('siswa', $data);
 })->middleware('siswa');
 
 Route::get('/login', [LoginController::class, 'index']);

@@ -84,6 +84,14 @@
                     </a>
                 </li>
             @endauth
+            @auth('siswa')
+                <li class="nav-item {{ active_class(['siswa']) }}">
+                    <a href="{{ url('/siswa') }}" class="nav-link">
+                        <i class="link-icon" data-feather="list"></i>
+                        <span class="link-title">Riwayat Pembayaran</span>
+                    </a>
+                </li>
+            @endauth
         </ul>
     </div>
 </nav>
